@@ -1,0 +1,99 @@
+
+
+<head>
+    <% include ../views/partials/head %>
+</head>
+<header>
+    <% include ../views/partials/header %>
+</header>
+    
+    <body>
+    
+    <div class="container">
+    
+    <div class="col-md-8 offset-md-2">
+    <div class="card">
+        <h1> <%= poll.name %> </h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
+    <canvas id="myChart" width="200" height="200"></canvas>
+    
+    
+    
+    
+    <% labels = []; %>
+    <% data = []; %>
+    
+    <% options.forEach(function(option) { %>
+        <div class='card'>
+         <h3><%= option.option %></h3>
+           <span class='text-left'><h4><%= option.votes %></h4></span> 
+           <% labels.push( option.option) %>
+           <% data.push(option.votes) %>
+           <% if (votedon == false) { %>
+           <a href='/polls/<%=poll._id %>/<%= option._id %>/vote' class="text-right"><button class="btn btn-primary"> Vote </button></a>
+           <% } %>
+        </div>
+        
+    <% }); %>
+    <a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?text=Check%20out%20this%20awesome%20poll"
+  data-size="large">
+Tweet</a>
+    
+<script>
+//pulls info from EJS in string format
+var labels = '<%- labels %>';
+var data = '<%- data %>';
+
+// splits the strings into arrays for usage with charts.js
+data = data.split(',')
+labels = labels.split(',')
+
+var backgroundColor = [];
+var borderColor = [];
+// creates enough colors for the pie chart
+function createColors(length){
+    var length = length;
+ 
+    
+    while (backgroundColor.length < length){
+        function rando(max, min){ return  Math.floor(Math.random() * (max - min) + min) }
+        var backcolor = 'rgba('+rando(255, 0)+','+rando(255, 0)+','+rando(255, 0)+', 0.2)'
+        var bordcolor = backcolor.replace('0.2)', '1)');
+        
+        backgroundColor.push(backcolor);
+        borderColor.push(bordcolor);
+       
+    }
+    
+};
+
+createColors(data.length);
+// creates pie chart w/ charts.js http://www.chartjs.org/
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: '# of Votes',
+            data: data,
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
+            borderWidth: 1
+        }]
+    }
+});
+</script>
+    
+    
+   </div>
+   </div>
+   </div>
+    
+    </body>
+
+
+<footer>
+        <% include ../views/partials/footer %>
+</footer>

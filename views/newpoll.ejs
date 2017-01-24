@@ -1,0 +1,42 @@
+
+
+<head>
+    <% include ../views/partials/head %>
+</head>
+<header>
+    <% include ../views/partials/header %>
+</header>
+
+    <body>
+    <h1> Create a New Poll </h1>
+    <div class="container">
+    <div class='col col-md-4'>
+    <div class='form-group'>
+        <form id="newpoll" method="post" action="/newpoll" enctype="application/x-www-form-urlencoded">
+        
+            <label for="name">Name:</label>
+            <input class='form-control' id="name" name="name" type="text">
+            
+            <div id="option1"> 
+
+            <label for="option1">Option 1:</label>
+            <input class='form-control' id="optionText1" name="option1" type="text">
+            </div>
+            
+            <div id="option2">
+            <label for="option2">Option 2:</label>
+            <input class='form-control' id="optionText2" name="option2" type="text">
+            </div>
+            
+            <input id="submit" type="submit" class='btn btn-primary' value="Save"></input>
+        </form>
+    </div>
+        <button id="remove" class='btn btn-danger'>X</button>
+        <button id="add" class='btn btn-primary'>+</button>
+    </div>
+    </div>
+
+</body>
+<footer>
+        <% include ../views/partials/footer %>
+</footer>

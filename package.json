@@ -1,0 +1,25 @@
+{
+  "name": "voting-app",
+  "version": "1.0.0",
+  "description": "dynamic voting application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jake A. casey",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "chart.js": "^2.4.0",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "https": "^1.0.0",
+    "mongodb": "^2.2.19",
+    "mongoose": "^4.7.6",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1"
+  }
+}

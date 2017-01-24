@@ -1,0 +1,44 @@
+
+
+<head>
+    <% include ../views/partials/head %>
+</head>
+<header>
+    <% include ../views/partials/header %>
+</header>
+    
+    <body>
+    <div class="container">
+    
+    <div id="messages">
+    <% if (messages.err){ %>
+        <div class="alert alert-danger" role="alert"> <%= messages.err %> </div>
+    <% } %>
+    <% if (messages.success){ %>
+        <div class="alert alert-success" role="alert"> <%= messages.success %> </div>
+    <% } %> 
+    </div>
+  
+    
+    
+    
+    <div class="col-md-8 offset-md-2">
+    <div class="card text-center">
+        <h1> Polls </h1>
+    <ul class="list-group list-group-flush">
+    <% polls.forEach(function(poll) { %>
+        
+      <li class="list-group-item">  <a href="/polls/<%= poll._id %>"> <%= poll.name %> </a> </li>
+        
+    <% }); %>
+    </ul>
+   </div>
+   </div>
+   </div>
+    
+    </body>
+
+
+<footer>
+        <% include ../views/partials/footer %>
+</footer>
